@@ -1,0 +1,185 @@
+User Guide: Optical Density (OD) Time-Series Visualization Shiny App
+Overview
+This Shiny application enables interactive visualization of Optical Density (OD) time-series data, typically used to measure microbial growth over time. It supports both wide and long-format CSV data, offering extensive customization options for axes, colors, error bars, labels, and plot export. This guide provides step-by-step instructions to use the app effectively.
+Prerequisites
+
+R Environment: Ensure R is installed (version 4.0 or higher recommended).
+
+Required Packages: Install the following R packages:
+install.packages(c("shiny", "tidyverse", "ggpubr", "gridExtra", "scales", "ggrepel", "ggprism", "svglite", "jsonlite"))
+
+
+Data: Prepare a CSV file with OD data in either:
+
+Wide format: One column for time (e.g., Time), multiple columns for OD measurements (e.g., Sample1, Sample2).
+Long format: Columns for time (e.g., Time), a grouping variable (e.g., Sample), and OD values (e.g., OD).
+
+
+
+Getting Started
+
+Save the Code: Save the annotated R script (Annotated_OD_Visualization_Shiny_App.R) to a file (e.g., od_app.R).
+Run the App:
+Open R or RStudio.
+
+Set the working directory to the script's location:
+setwd("path/to/script")
+
+
+Source and run the script:
+source("od_app.R")
+
+
+The app will launch in a browser window or RStudio viewer.
+
+
+
+
+Using the App
+The app interface consists of a sidebar panel for controls and a main panel for the plot display. Below are the key features and how to use them.
+1. Uploading Data
+
+Choose CSV File: Click "Choose CSV File" to upload your data.
+Data Format:
+Wide Format Example:
+Time,Sample1,Sample2
+0,0.01,0.02
+10,0.05,0.06
+
+
+Long Format Example:
+Time,Sample,OD
+0,Sample1,0.01
+0,Sample2,0.02
+10,Sample1,0.05
+
+
+
+
+The app automatically detects the time column (e.g., Time, t) and OD variables. It adjusts settings like X-axis limits based on the data range.
+
+2. Customizing the Plot
+The sidebar contains collapsible sections for various customization options. Click the section titles to expand/collapse them.
+Axis Settings
+
+Axis Scales: Choose linear, logarithmic, square root, or reverse scales for X and Y axes (default: X linear, Y logarithmic).
+Advanced Tick Customization: Enable to fine-tune tick marks, especially for logarithmic Y-axes (set min/max exponents).
+Custom Limits: Set specific X/Y axis ranges (e.g., X: 0-100, Y: 0.01-2).
+Axis Expansion: Adjust padding around the plot (0-10% of axis range).
+Labels & Formatting:
+Set X/Y labels (default: "Time (minutes)", "A550").
+Add a plot title or subtitle.
+Enable/disable gridlines and customize their color and width.
+Select font family (e.g., Arial, Times New Roman), sizes, and styles (bold title, italic labels).
+Rotate X-axis text (0°, 45°, 90°).
+
+
+
+Region Highlighting
+
+Enable Highlighting: Check to add up to 5 rectangular regions.
+Settings: For each region, set X/Y min/max, fill color (predefined or custom HEX), and transparency (0-1).
+
+Time Point Markers
+
+Enable Markers: Check to add up to 5 vertical lines at specific time points.
+Settings: Specify time, line type, color, width, and optional labels (with position and size).
+
+Color Palettes
+
+Select Palette: Choose from Viridis, Plasma, Colorblind-friendly, Publication-ready, Rainbow, Grayscale, or Custom.
+Preview: Non-custom palettes display a color preview.
+
+Line & Point Settings
+
+Line Options: Set line type (solid, dashed, etc.) and thickness (0.1-3).
+Point Options: Show/hide points, adjust size (0.5-5) and border thickness (0-2).
+
+Label Options
+
+End-of-Line Labels: Display labels at the end of each line, with customizable font size, bold style, and offset.
+
+Error Bar Settings
+
+Type: None, Standard Deviation (SD), Standard Error of Mean (SEM), or 95% Confidence Interval (CI95) (default: SEM).
+Style: T-shaped, solid, or dashed lines.
+Cap Type: Flat, round, or none.
+Width/Thickness: Adjust bar width (0.01-1) and thickness (0.1-2).
+Multiplier: Scale error bars (0.1-3).
+Position: Middle or dodged.
+Asymmetric Errors: Allow negative values to be clipped at zero.
+
+Plot Dimensions & Export
+
+Dimensions: Set plot width (400-2000 px) and height (300-1500 px).
+Aspect Ratio: Enable custom width/height ratio (0.5-3).
+Export:
+Choose format (PDF, PNG, JPEG, SVG, TIFF).
+Set export width/height (2-20 inches) and DPI (72-1200).
+Click "Download Plot" to save.
+
+
+
+Variable Styling
+
+Dynamic Settings: After uploading data, this section generates controls for each OD variable.
+Options:
+Line type (solid, dashed, etc.).
+Point shape (circle, square, etc.) and fill status.
+Color: Select predefined colors, custom HEX, RGB sliders, or HEX input.
+Custom legend label.
+
+
+
+3. Saving and Loading Settings
+
+Save Settings: Click "Save Current Settings" to download a JSON file with all current configurations.
+Load Settings: Upload a previously saved JSON file to restore settings. Note: Some settings may not apply if the data structure differs.
+
+4. Viewing and Exporting the Plot
+
+The plot updates in real-time as you adjust settings.
+Use the "Download Plot" button to export the plot in the specified format and dimensions.
+
+Data Requirements
+
+CSV Structure:
+At least one numeric time column.
+At least one numeric OD column (wide format) or a value column (long format).
+Long format requires a grouping column (e.g., Sample).
+
+
+Cleaning: Ensure no missing or non-numeric values in critical columns. The app filters out NA/infinite values.
+
+Troubleshooting
+
+App Not Loading: Verify all packages are installed and the script is sourced correctly.
+No Plot Displayed: Check if the CSV file is correctly formatted and contains numeric data.
+Color Issues: Ensure HEX codes are valid (e.g., #FF0000). Use the RGB sliders for precise control.
+Slow Performance: Large datasets may slow down the app. Consider subsampling data.
+Settings Not Loading: Ensure the JSON file matches the current app version and data structure.
+
+Tips for Effective Use
+
+Start Simple: Upload data and explore default settings before customizing.
+Use Log Scales: Logarithmic Y-axis is default for OD data to better visualize exponential growth.
+Save Frequently: Save settings before major changes to avoid losing configurations.
+Preview Colors: Use the palette preview to select appropriate color schemes.
+Export High-Quality: Use SVG or PDF for publication-quality plots; adjust DPI for raster formats.
+
+Example Workflow
+
+Upload a CSV file with time and OD data.
+Adjust the Y-axis to logarithmic scale and set custom limits (e.g., 0.01-2).
+Enable region highlighting to mark a growth phase (e.g., 20-40 minutes).
+Add a time marker at 30 minutes with a label.
+Select a colorblind-friendly palette.
+Customize line thickness and point size.
+Add SEM error bars with T-shaped style.
+Save settings as a JSON file.
+Export the plot as a high-resolution PNG (300 DPI).
+
+Support
+For issues or feature requests, contact the developer or refer to the Shiny and ggplot2 documentation for advanced customization.
+
+Last Updated: April 22, 2025
