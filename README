@@ -1,0 +1,26 @@
+N4-Lysis-paper-codes
+
+This repository contains code accompanying the manuscript on N4 lysis.  
+It includes scripts for data formatting and visualization used in the analysis and figure preparation for the paper.
+
+Overview
+The repository is organized into subfolders, each containing a dedicated README file:
+
+FASTA Formatting Scripts – utilities for reformatting FASTA files.  
+Growth Curve Plotting Scripts – tools for plotting changes in optical density (OD) over time to visualize bacterial lysis dynamics.
+
+Each subdirectory includes usage instructions and example input/output files.
+
+Purpose
+These scripts were developed to support reproducible analysis of experimental data and figure generation for publication.
+
+Author
+Michael Baffour Awuah  
+Graduate student, Ramsey Lab, Department of Biology, Texas A&M University  
+Email: mbaffour890@gmail.com/baffour@tamu.edu
+
+License
+This project is distributed under the GNU Affero General Public License v3.0  
+See the LICENSE file for details.
+
+© 2025 Michael Baffour Awuah. All rights reserved.
