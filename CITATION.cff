@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code in your research or analysis, please cite it as below."
+title: "N4-Lysis-paper-codes"
+version: "v1.0.0"
+doi: "10.5281/zenodo.18628641"
+authors:
+  - family-names: "Awuah"
+    given-names: "Michael Baffour"
+    affiliation: "Ramsey Lab, Department of Biology, Texas A&M University"
+    orcid: "https://orcid.org/0009-0007-9036-413X"
+date-released: "2025-11-06"
+abstract: |
+  Shiny apps and R scripts for plotting lysis curves and reformatting
+  FASTA files used in the analysis and figure preparation for the N4
+  lysis manuscript.
+license: "AGPL-3.0"
+repository-code: "https://github.com/mbaffour/N4-Lysis-paper-codes"
+url: "https://github.com/mbaffour/N4-Lysis-paper-codes"
+keywords:
+  - R
+  - Shiny
+  - lysis curves
+  - FASTA
